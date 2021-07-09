@@ -1,0 +1,190 @@
+*{
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Oswald', 'Noto Sans TC', sans-serif;
+}
+/* 最小頁面寬度 */
+body{
+  min-width: 280px;
+  background-color: #f2f2f2;
+}
+.logo{
+  width: 30px;
+  height: 30px;
+  vertical-align: bottom;
+}
+/* 選單靠右 */
+.navbar-nav{
+  margin-left: auto;
+  margin-right: 0;
+}
+/* 圖片裁切 */
+img.d-block{
+  object-fit: cover;
+  object-position: 50% 100%;
+  height: 100vh;
+}
+/* 字幕置中 */
+.carousel-caption{
+  bottom: 50%;
+  transform: translate(0,50%);
+}
+/* 指示器外觀 */
+.carousel-indicators [data-bs-target]{
+  width: 15px;
+  height: 15px;
+  margin: 0 10px;
+  border-radius: 50%;
+}
+/* 圖標大小 */
+.fa-chevron-left,.fa-chevron-right{
+  font-size: 2.5rem;
+}
+/* 自介背景 */
+#floMyProfile>div.bg{
+  background-color: #333;
+  top: 0;
+}
+/* 照片大小 */
+#floMyProfile img{
+  min-width: 200px;
+  min-height: 200px;
+  max-width: 250px;
+  max-height: 250px;
+  width: 60vw;
+  height: 60vw;
+}
+/* 文字大小 */
+p>span.fns{
+  font-size: 2.7rem;
+}
+div.flex-column>p{
+  line-height: 2rem ;
+}
+/* 文字顏色 */
+#floMyProfile div.bg div.flex-column,
+#floJobs div.row>p{
+  -webkit-filter:invert(1);
+}
+/* 響應式 */
+@media (min-width: 992px){
+  #floMyProfile>div.bg{
+    background-color: #333;
+    clip-path: polygon(0 0, 34% 0, 90% 100%, 0% 100%);
+  }
+  #floMyProfile img{
+    max-width: 400px;
+    max-height: 400px;
+    width: 30vw;
+    height: 30vw;
+  }
+  p>span{
+    font-size: 1.5rem;
+  }
+  p>span.fns{
+    font-size: 3.7rem;
+  }
+  div.flex-column>p{
+    font-size: 1.2rem;
+  }
+}
+/* 宇宙裝飾 */
+div.universe>div:not(div.h-75){
+  width: 120vh;
+  height: 120vh;
+  border-radius: 40%;
+  background-color: #333;
+}
+div.universe>div.u-1{
+  opacity: 0.8;
+  transition: left 2s;
+  animation: demo1 3000ms infinite linear;
+}
+div.universe>div.u-2{
+  opacity: 0.6;
+  animation: demo1 3500ms infinite linear;
+}
+div.universe>div.u-3{
+  opacity: 0.3;
+  animation: demo1 5000ms infinite linear;
+}
+div.universe>div.h-75,
+div.vh-100>div.h-75{
+  top: 23%;
+  right: 35%;
+}
+@keyframes demo1 {
+  0%{
+    transform: rotate(0deg);
+  }
+  0%{
+    transform: rotate(360deg);
+  }
+}
+/* 經歷位置 */
+div.vh-100>div.h-75{
+  right: 0;
+}
+/* 宇宙位置 */
+div.universe>div.h-75{
+  z-index: 99;
+  right: 35%;
+}
+#floJobs div.universe{
+  right: 0;
+}
+/* 背景改色 */
+@media (max-width: 768px){
+  section.bg-dk{
+    background-color: #333;
+  }
+}
+.accordion-button:not(.collapsed) {
+  background-color: #ffc280;
+}
+/* icon改色 */
+.accordion-button:focus {
+  border-color: #b25d00;
+  box-shadow: 0 0 0 0.25rem rgb(255 215 200 / 25%);
+}
+.accordion-body {
+color: #333;
+background-color: #eee;
+}
+.accordion-button::after {
+background-image: url(./icon/方向箭頭.svg);
+}
+.accordion-button:not(.collapsed)::after {
+background-image: url(./icon/方向箭頭2.svg);
+}
+/* 圓形數字 */
+#floJobs div>a>div.rounded-circle::before{
+  color: #f2f2f2;
+  left: -40px;
+  position: absolute;
+  top: -2px;
+}
+#floJobs div>a>div.c1::before{
+  content : "2021";
+  top: 13px;
+}
+#floJobs div>a>div.c2::before{
+  content : "2019";
+}
+#floJobs div>a>div.c3::before{
+  content : "2018";
+}
+#floJobs div>a>div.c4::before{
+  content : "2017";
+}
+#floJobs div>a>div.c5::before{
+  content : "2016";
+}
+#floJobs div>a>div.c6::before{
+  content : "2011";
+  top: 3px;
+}
+/* 超連結去底線 */
+a{
+  text-decoration: none;
+}
