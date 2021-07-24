@@ -1,0 +1,18 @@
+<script>
+
+  function method(name){
+      let ckary = document.cookie.split("; ");
+      const getVal = ckary.find(e => name+'=' == e.substr(0, name.length+1));
+      return (getVal != undefined)? getVal.split("=")[1] : false;
+    }
+    
+  const user = method("user");
+
+  // 清除cookie
+  let time = new Date();
+  time.setHours(time.getHours()-2);
+  time = time.toUTCString();
+  document.cookie="user=" + user + "; expires=" + time;
+  location.href = "index.html";
+
+</script>

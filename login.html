@@ -12,8 +12,15 @@
   <script src="./plugins/bootstrap.bundle.min.js"></script>
   <!-- icon -->
   <script src="https://kit.fontawesome.com/587e13d6a7.js" crossorigin="anonymous"></script>
+  <style>
+    body{
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
 </head>
-<body style="background-image: url(./image/11426908_MotionElements_background-rainfall-v_converted_370484-640x360-3s-q2.gif);">
+<body style="background-image: url(./image/login/login_bg.svg);">
   <section class="container vh-100 d-flex justify-content-center align-items-center">
     <form action="" method="GET" class="row px-4 py-3" style="width: 400px; border-radius: 10px; background-color: #f2f2f2;">
       <div class="text-center mt-3">
@@ -36,13 +43,13 @@
   </section>
   <script>
     const login = () => {
-      if(document.querySelector("#floUser").value == "admin" && document.querySelector("#floPwd").value == "12345"){
+      if(document.querySelector("#floUser").value == "admin" && document.querySelector("#floPwd").value == "1234"){
         let user = document.querySelector("#floUser").value;
         let time = new Date();
         time.setHours(time.getHours()+6);
         time = time.toUTCString();
         document.cookie="user=" + user + "; expires=" + time;
-        location.href = "https://tdbklove.github.io/";
+        location.href = "index.html";
       }else{
         alert("帳號或密碼有誤,請再重新輸入");
       }

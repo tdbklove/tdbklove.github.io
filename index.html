@@ -13,37 +13,16 @@
   <!-- icon -->
   <script src="https://kit.fontawesome.com/587e13d6a7.js" crossorigin="anonymous"></script>
   <!-- 字體 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;900&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;900&family=Play:wght@400;700&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;900&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
   <!-- 自訂css -->
   <link rel="stylesheet" href="style.css">
-  <script>
-    // 找除cookie值
-    function method(name){
-      let ckary = document.cookie.split("; ");
-      const getVal = ckary.find(e => name+'=' == e.substr(0, name.length+1));
-      return (getVal != undefined)? getVal.split("=")[1] : false;
-    }
-    
-    const user = method("user");
-
-    if(user != "undefined") document.querySelector("#login").classList="d-none";
-    else document.querySelector("#logout").classList="d-none";
-
-    // 清除cookie
-    function userClear(){
-      let time = new Date();
-      time.setHours(time.getHours()-2);
-      time = time.toUTCString();
-      document.cookie="user=" + user + "; expires=" + time;
-    }
-  </script>
+  <!-- 添加jq -->
+  <script src="plugins/jquery-3.6.0.min.js"></script>
 </head>
 <body>
   <!-- 導覽列 -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
+    <div id="floMenu" class="container">
       <a class="navbar-brand" href="#">
         <img src="./icon/logo_icon.svg" alt="logo" class="logo me-1">
          Flo's Resume
@@ -74,8 +53,8 @@
             作品集
           </a>
         </div>
-        <a href="login.html" id="login" class="btn btn-outline-warning ms-5">登入</a>
-        <span class="text-muted ms-5" id="logout">歡迎 , admin<button type="button" class="btn btn-outline-warning ms-3" onclick="userClear()">登出</button></span>
+        <a href="login.html" id="login" class="btn btn-outline-warning ms-lg-5">登入</a>
+        <span class="text-muted ms-lg-5" id="logout">歡迎 , <a href="logout.html" class="btn btn-outline-warning ms-3">登出</a></span>
       </div>
     </div>
   </nav>
@@ -85,30 +64,22 @@
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#floSlideshow" data-bs-slide-to="0" class="active"></button>
         <button type="button" data-bs-target="#floSlideshow" data-bs-slide-to="1"></button>
-        <button type="button" data-bs-target="#floSlideshow" data-bs-slide-to="2"></button>
       </div>
       <!-- 圖片 -->
       <div class="carousel-inner">
         <div class="carousel-item vh-100 active">
-          <img src="./image/幻燈片01.jpg" class="d-block w-100 h-100" alt="...">
+          <img src="./image/幻燈片01.jpg" class="d-block w-100 h-100">
           <!-- 字幕 -->
           <div class="carousel-caption d-none d-md-block">
-            <h2>我將在成為「碼農」的路上越走越遠</h2>
-            <p>但我想英文會是我最大的阻礙 ...</p>
+            <h2>Hello!很高興您抽空閱讀我的履歷</h2>
+            <p>請往下翻閱來認識我一下吧!</p>
           </div>
         </div>
         <div class="carousel-item vh-100">
-          <img src="./image/幻燈片02.jpg" class="d-block w-100 h-100" alt="...">
+          <img src="./image/幻燈片02.jpg" class="d-block w-100 h-100">
           <div class="carousel-caption d-none d-md-block">
-            <h2>「程式碼」是種可怕的東西</h2>
-            <p>我才三天不見 , 它看起來就像一種外星語言</p>
-          </div>
-        </div>
-        <div class="carousel-item vh-100">
-          <img src="./image/11426908_MotionElements_background-rainfall-v_converted_370484-640x360-3s-q2.gif" class="d-block w-100 h-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h2>我的「邏輯」在腦中打成死結</h2>
-            <p>我想我必須想辦法去疏通它 ...</p>
+            <h2>「溫和待人並精進自己」是我的座右銘</h2>
+            <p>相信我不會讓您失望的</p>
           </div>
         </div>
       </div>
@@ -151,7 +122,7 @@
       <div class="container vh-100">
         <div class="row h-100">
           <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
-              <img src="./image/11426913_MotionElements_background-bokeh-blur_converted_370492-640x360-3s-q2.gif" alt="個人照" class="rounded-circle">
+              <img src="./image/頭像.svg" alt="頭像" class="rounded-circle" style="object-fit: cover;">
           </div>
           <div class="col-12 col-md-6 d-flex flex-column justify-content-center ps-4">
             <!-- 標題 -->
@@ -168,7 +139,6 @@
               E-mail：agito40702@gmail.com
             </p>
           </div>
-          <a href="#floAutobiography" class="href d-none d-md-inline"><i class="fas fa-sort-down fs-2 text-white-50"></i></a>
         </div>
       </div>
     </div>
@@ -178,7 +148,7 @@
     <div class="container vh-100">
       <div class="row row-cols-md-2 vh-100 position-relative">
         <div class="col-12 col-md-6 order-md-1 d-flex justify-content-center align-items-center">
-          <img src="./image/11426913_MotionElements_background-bokeh-blur_converted_370492-640x360-3s-q2.gif" alt="" class="w-75 h-75">
+          <img src="./image/100512081.jpg" alt="個人照" class="w-75 h-75" style="object-fit: cover;">
         </div>
         <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
           <!-- 標題 -->
@@ -191,7 +161,6 @@
           </p>
           <div class="w-100 mt-3" style="height: 5px; background-color: #333;"></div>
         </div>
-        <a href="#floJobs" class="href d-none d-md-inline"><i class="fas fa-sort-down fs-2 text-black-50"></i></a>
       </div>
     </div>
   </section>
@@ -201,18 +170,18 @@
       <!-- md以上 -->
       <div class="row d-none d-md-flex position-relative">
         <div class="col-md-5 universe d-none d-md-flex justify-content-end position-relative">
-          <div class="u-1 position-absolute"></div>
-          <div class="u-2 position-absolute"></div>
           <div class="u-3 position-absolute"></div>
+          <div class="u-2 position-absolute"></div>
+          <div class="u-1 position-absolute"></div>
           <div class="dc-u position-absolute"></div>
           <div class="h-75 w-50 d-flex flex-column justify-content-around position-absolute" style="margin-top: -50px;">
             <!-- 經歷1 -->
             <a class="row align-self-center" data-bs-toggle="collapse" href="#floColl-1">
-              <div class="rounded-circle position-relative c1" style="width: 50px; height: 50px; background-color: #f8f9fa"></div>
+              <div class="rounded-circle position-relative c1" style="width: 60px; height: 60px; background-color: #f8f9fa"></div>
             </a>
             <!-- 經歷2 -->
             <a class="align-self-end" data-bs-toggle="collapse" href="#floColl-2">
-              <div class="rounded-circle position-relative c2" style="width: 20px; height: 20px; background-color: #f8f9fa;"></div>
+              <div class="rounded-circle position-relative c2" style="width: 30px; height: 30px; background-color: #f8f9fa;"></div>
             </a>
             <!-- 經歷3 -->
             <a class="align-self-end" data-bs-toggle="collapse" href="#floColl-3">
@@ -220,15 +189,15 @@
             </a>
             <!-- 經歷4 -->
             <a class="align-self-center" data-bs-toggle="collapse" href="#floColl-4">
-              <div class="rounded-circle position-relative c4" style="width: 20px; height: 20px; background-color: #f8f9fa;"></div>
+              <div class="rounded-circle position-relative c4" style="width: 30px; height: 30px; background-color: #f8f9fa;"></div>
             </a>
             <!-- 經歷5 -->
             <a class="align-self-center" data-bs-toggle="collapse" href="#floColl-5">
-              <div class="rounded-circle position-relative c5" style="width: 20px; height: 20px; background-color: #f8f9fa;"></div>
+              <div class="rounded-circle position-relative c5" style="width: 40px; height: 40px; background-color: #f8f9fa;"></div>
             </a>
             <!-- 經歷6 -->
             <a class="align-self-end" data-bs-toggle="collapse" href="#floColl-6">
-              <div class="rounded-circle position-relative c6" style="width: 30px; height: 30px; background-color: #f8f9fa;"></div>
+              <div class="rounded-circle position-relative c6" style="width: 50px; height: 50px; background-color: #f8f9fa;"></div>
             </a>
           </div>
         </div>
@@ -239,15 +208,15 @@
             <div>
               <a class="align-self-end text-decoration-none" data-bs-toggle="collapse" href="#floColl-1">
                 <!-- 標題 -->
-                <div class="row ms-5 ms-lg-0">
+                <div class="row ms-5 ms-lg-0 div-hover">
                   <div class="col-6"><span class="d-inline-block w-100 text-dark fs-3 text-lg-end text-nowrap pt-2">PHP資料庫網頁設計</span></div>
                   <div class="col-12 col-lg-6 d-flex flex-column"><span class="text-muted fs-6 text-nowrap d-none d-lg-inline">2021 / 03 - 2021 / 09</span><span class="text-dark fs-5">泰山職業訓練場</span></div>
                 </div>
               </a>
               <div class="collapse" id="floColl-1" data-bs-parent="#floJobs">
                 <!-- 內文 -->
-                <div class="card card-body mt-2">
-                  Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                <div class="card card-body mt-2 text-center">
+                  學習網頁開發基本知識 , 前端技術：HTML/CSS、JavaScript、jQuery , 後端技術：PHP和MySQL
                 </div>
               </div>
             </div>
@@ -255,15 +224,15 @@
             <div>
               <a class="align-self-end text-decoration-none" data-bs-toggle="collapse" href="#floColl-2">
                 <!-- 標題 -->
-                <div class="row ms-5 ms-lg-0">
+                <div class="row ms-5 ms-lg-0 div-hover">
                   <div class="col-6"><span class="d-inline-block w-100 text-dark fs-3 text-lg-end text-nowrap pt-2">設計人員</span></div>
                   <div class="col-12 col-lg-6 d-flex flex-column"><span class="text-muted fs-6 text-nowrap d-none d-lg-inline">2019 / 04 - 2021 / 01</span><span class="text-dark fs-5">印品國際開發有限公司</span></div>
                 </div>
               </a>
               <div class="collapse" id="floColl-2" data-bs-parent="#floJobs">
                 <!-- 內文 -->
-                <div class="card card-body mt-2">
-                  Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                <div class="card card-body mt-2 text-center">
+                  負責桌曆設計與筆記本內頁編排 , 以及客戶稿件的檢查 , 具印刷基本相關知識
                 </div>
               </div>
             </div>
@@ -271,15 +240,15 @@
             <div>
               <a class="align-self-end text-decoration-none" data-bs-toggle="collapse" href="#floColl-3">
                 <!-- 標題 -->
-                <div class="row ms-5 ms-lg-0">
+                <div class="row ms-5 ms-lg-0 div-hover">
                   <div class="col-6"><span class="d-inline-block w-100 text-dark fs-3 text-lg-end text-nowrap pt-2">美工助理</span></div>
                   <div class="col-12 col-lg-6 d-flex flex-column"><span class="text-muted fs-6 text-nowrap d-none d-lg-inline">2018 / 09 - 2019 / 03</span><span class="text-dark fs-5">統揚公寓大廈管理維護有限公司</span></div>
                 </div>
               </a>
               <div class="collapse" id="floColl-3" data-bs-parent="#floJobs">
                 <!-- 內文 -->
-                <div class="card card-body mt-2">
-                  Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                <div class="card card-body mt-2 text-center">
+                  主要負責文書資料繕打 , 以及活動現場拍攝綠影、社區CIS設計與App系統公告等
                 </div>
               </div>
             </div>
@@ -287,15 +256,15 @@
             <div>
               <a class="align-self-end text-decoration-none" data-bs-toggle="collapse" href="#floColl-4">
                 <!-- 標題 -->
-                <div class="row ms-5 ms-lg-0">
+                <div class="row ms-5 ms-lg-0 div-hover">
                   <div class="col-6"><span class="d-inline-block w-100 text-dark fs-3 text-lg-end text-nowrap pt-2">會計助理</span></div>
                   <div class="col-12 col-lg-6 d-flex flex-column"><span class="text-muted fs-6 text-nowrap d-none d-lg-inline">2017 / 02 - 2018 / 08</span><span class="text-dark fs-5">台灣愛惠浦股份有限公司</span></div>
                 </div>
               </a>
               <div class="collapse" id="floColl-4" data-bs-parent="#floJobs">
                 <!-- 內文 -->
-                <div class="card card-body mt-2">
-                  Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                <div class="card card-body mt-2 text-center">
+                  大學期間兼職的工作 , 負責每日沖帳與信件收發 , 應收帳款明細與請款單製作、發票檢查等
                 </div>
               </div>
             </div>
@@ -303,15 +272,15 @@
             <div>
               <a class="align-self-end text-decoration-none" data-bs-toggle="collapse" href="#floColl-5">
                 <!-- 標題 -->
-                <div class="row ms-5 ms-lg-0">
+                <div class="row ms-5 ms-lg-0 div-hover">
                   <div class="col-6"><span class="d-inline-block w-100 text-dark fs-3 text-lg-end text-nowrap pt-2">視覺傳達設計系</span></div>
                   <div class="col-12 col-lg-6 d-flex flex-column"><span class="text-muted fs-6 text-nowrap d-none d-lg-inline">2016 / 09 - 2018 / 06</span><span class="text-dark fs-5">國立臺灣藝術大學</span></div>
                 </div>
               </a>
               <div class="collapse" id="floColl-5" data-bs-parent="#floJobs">
                 <!-- 內文 -->
-                <div class="card card-body mt-2">
-                  Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                <div class="card card-body mt-2 text-center">
+                  習得設計相關知識 , 與軟體操作技能 : Ps、Ai、Id、Pr、Ae、Mu等
                 </div>
               </div>
             </div>
@@ -319,21 +288,20 @@
             <div>
               <a class="align-self-end text-decoration-none" data-bs-toggle="collapse" href="#floColl-6">
                 <!-- 標題 -->
-                <div class="row ms-5 ms-lg-0">
+                <div class="row ms-5 ms-lg-0 div-hover">
                   <div class="col-6"><span class="d-inline-block w-100 text-dark fs-3 text-lg-end text-nowrap pt-2">化妝品應用與管理科</span></div>
                   <div class="col-12 col-lg-6 d-flex flex-column"><span class="text-muted fs-6 text-nowrap d-none d-lg-inline">2011 / 09 - 2016 / 06</span><span class="text-dark fs-5">私立耕莘健康管理專科學校</span></div>
                 </div>
               </a>
               <div class="collapse" id="floColl-6" data-bs-parent="#floJobs">
                 <!-- 內文 -->
-                <div class="card card-body mt-2">
-                  Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                <div class="card card-body mt-2 text-center">
+                  習得化妝品調製、美容美髮等技能 , 以科排第一的成績畢業
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <a href="#flosKill" class="href d-none d-md-inline"><i class="fas fa-sort-down fs-2 text-black-50"></i></a>
       </div>
       <!-- md以下 -->
       <div class="d-md-none">
@@ -344,7 +312,7 @@
           <!-- 經歷1 -->
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#floColl-1">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#floColl1">
                 <!-- 時間 -->
                 <div class="row d-flex flex-column justify-content-around me-3">
                   <span class="text-dark fs-6">2021/03 </span>
@@ -357,17 +325,17 @@
                 </div>
               </button>
             </h2>
-            <div id="floColl-1" class="accordion-collapse collapse"  data-bs-parent="#floJobs">
+            <div id="floColl1" class="accordion-collapse collapse"  data-bs-parent="#floJobs">
               <!-- 內文 -->
               <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                學習網頁開發基本知識 , 前端技術：HTML/CSS、JavaScript、jQuery , 後端技術：PHP和MySQL
               </div>
             </div>
           </div>
           <!-- 經歷2 -->
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#floColl-2">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#floColl2">
                 <!-- 時間 -->
                 <div class="row d-flex flex-column justify-content-around me-3">
                   <span class="text-dark fs-6">2021/03 </span>
@@ -380,17 +348,17 @@
                 </div>
               </button>
             </h2>
-            <div id="floColl-2" class="accordion-collapse collapse"  data-bs-parent="#floJobs">
+            <div id="floColl2" class="accordion-collapse collapse"  data-bs-parent="#floJobs">
               <!-- 內文 -->
               <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                負責桌曆設計與筆記本內頁編排 , 以及客戶稿件的檢查 , 具印刷基本相關知識
               </div>
             </div>
           </div>
           <!-- 經歷3 -->
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#floColl-3">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#floColl3">
                 <!-- 時間 -->
                 <div class="row d-flex flex-column justify-content-around me-3">
                   <span class="text-dark fs-6">2018/09 </span>
@@ -403,17 +371,17 @@
                 </div>
               </button>
             </h2>
-            <div id="floColl-3" class="accordion-collapse collapse"  data-bs-parent="#floJobs">
+            <div id="floColl3" class="accordion-collapse collapse"  data-bs-parent="#floJobs">
               <!-- 內文 -->
               <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                主要負責文書資料繕打 , 以及活動現場拍攝綠影、社區CIS設計與App系統公告等
               </div>
             </div>
           </div>
           <!-- 經歷4 -->
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#floColl-4">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#floColl4">
                 <!-- 時間 -->
                 <div class="row d-flex flex-column justify-content-around me-3">
                   <span class="text-dark fs-6">2017/02 </span>
@@ -426,17 +394,17 @@
                 </div>
               </button>
             </h2>
-            <div id="floColl-4" class="accordion-collapse collapse"  data-bs-parent="#floJobs">
+            <div id="floColl4" class="accordion-collapse collapse"  data-bs-parent="#floJobs">
               <!-- 內文 -->
               <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                大學期間兼職的工作 , 負責每日沖帳與信件收發 , 應收帳款明細與請款單製作、發票檢查等
               </div>
             </div>
           </div>
           <!-- 經歷5 -->
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#floColl-5">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#floColl5">
                 <!-- 時間 -->
                 <div class="row d-flex flex-column justify-content-around me-3">
                   <span class="text-dark fs-6">2016/09 </span>
@@ -449,17 +417,17 @@
                 </div>
               </button>
             </h2>
-            <div id="floColl-5" class="accordion-collapse collapse"  data-bs-parent="#floJobs">
+            <div id="floColl5" class="accordion-collapse collapse"  data-bs-parent="#floJobs">
               <!-- 內文 -->
               <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                習得設計相關知識 , 與軟體操作技能 : Ps、Ai、Id、Pr、Ae、Mu等
               </div>
             </div>
           </div>
           <!-- 經歷6 -->
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#floColl-6">
+              <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#floColl6">
                 <!-- 時間 -->
                 <div class="row d-flex flex-column justify-content-around me-3">
                   <span class="text-dark fs-6">2011/09 </span>
@@ -472,10 +440,10 @@
                 </div>
               </button>
             </h2>
-            <div id="floColl-6" class="accordion-collapse collapse"  data-bs-parent="#floJobs">
+            <div id="floColl6" class="accordion-collapse collapse"  data-bs-parent="#floJobs">
               <!-- 內文 -->
               <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                習得化妝品調製、美容美髮等技能 , 以科排第一的成績畢業
               </div>
             </div>
           </div>
@@ -497,7 +465,7 @@
             </div>
             <div class="mt-3">
               <h4>網頁前端</h4>
-              <p class="text-muted mt-1">HTML / CSS / JavaScript</p>
+              <p class="text-muted mt-1">HTML / CSS / JavaScript / jQuery</p>
             </div>
           </div>
         </div>
@@ -535,7 +503,6 @@
           </div>
         </div>
       </div>
-      <a href="#floPortfolio" class="href d-none d-md-inline"><i class="fas fa-sort-down fs-2 text-black-50"></i></a>
     </div>
   </section>
   <!-- 作品集 -->
@@ -555,27 +522,101 @@
         <div class="row">
           <div class="col-12 col-md-6 col-lg-3 p-3">
             <!-- 超連結 -->
-            <a class="card p-0" href="">
+            <a class="card p-0" target="_blank" href="http://220.128.133.15/s1100202/html/table/">
               <!-- 圖片 -->
-              <img src="image/卡比小動畫.jpg" class="card-img-top" alt="...">
+              <img src="image/Portfolio/table.jpg" class="card-img-top">
+              <!-- hover -->
+              <div class="card-href">
+                <div>
+                  <i class="fas fa-link"></i>
+                  <div style="font-size: 1rem;">元素週期表</div>
+                </div>
+              </div>
               <div class="card-body">
                 <!-- 標題 -->
-                <h5 class="card-title text-dark">卡比小動畫</h5>
+                <h5 class="card-title text-dark">元素週期表</h5>
                 <!-- 內文 -->
-                <p class="card-text text-muted">以純程式碼撰寫</p>
+                <p class="card-text text-muted">HTML / CSS / JS / JQ</p>
               </div>
             </a>
           </div>
           <div class="col-12 col-md-6 col-lg-3 p-3">
             <!-- 超連結 -->
-            <a class="card p-0" href="">
+            <a class="card p-0" target="_blank" href="http://220.128.133.15/s1100202/html/animation/">
               <!-- 圖片 -->
-              <img src="/image/11426908_MotionElements_background-rainfall-v_converted_370484-640x360-3s-q2.gif" class="card-img-top" alt="...">
+              <img src="image/Portfolio/animation.jpg" class="card-img-top">
+              <!-- hover -->
+              <div class="card-href">
+                <div>
+                  <i class="fas fa-link"></i>
+                  <div style="font-size: 1rem;">卡比動畫</div>
+                </div>
+              </div>
               <div class="card-body">
                 <!-- 標題 -->
-                <h5 class="card-title text-dark">數位時鐘</h5>
+                <h5 class="card-title text-dark">卡比動畫</h5>
                 <!-- 內文 -->
-                <p class="card-text text-muted">以純程式碼撰寫</p>
+                <p class="card-text text-muted">HTML / CSS / Bootstrap</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 p-3">
+            <!-- 超連結 -->
+            <a class="card p-0" target="_blank" href="http://220.128.133.15/s1100202/html/color/">
+              <!-- 圖片 -->
+              <img src="image/Portfolio/color.jpg" class="card-img-top">
+              <!-- hover -->
+              <div class="card-href">
+                <div>
+                  <i class="fas fa-link"></i>
+                  <div style="font-size: 1rem;">調色器</div>
+                </div>
+              </div>
+              <div class="card-body">
+                <!-- 標題 -->
+                <h5 class="card-title text-dark">調色器</h5>
+                <!-- 內文 -->
+                <p class="card-text text-muted">HTML / CSS / JS</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 p-3">
+            <!-- 超連結 -->
+            <a class="card p-0" target="_blank" href="http://220.128.133.15/s1100202/html/alert/">
+              <!-- 圖片 -->
+              <img src="image/Portfolio/alert.jpg" class="card-img-top">
+              <!-- hover -->
+              <div class="card-href">
+                <div>
+                  <i class="fas fa-link"></i>
+                  <div style="font-size: 1rem;">生物知識小課堂</div>
+                </div>
+              </div>
+              <div class="card-body">
+                <!-- 標題 -->
+                <h5 class="card-title text-dark">生物知識小課堂</h5>
+                <!-- 內文 -->
+                <p class="card-text text-muted">HTML / CSS / SweetAlert2</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 p-3">
+            <!-- 超連結 -->
+            <a class="card p-0" target="_blank" href="http://220.128.133.15/s1100202/php/calendar/">
+              <!-- 圖片 -->
+              <img src="image/Portfolio/calendar.jpg" class="card-img-top">
+              <!-- hover -->
+              <div class="card-href">
+                <div>
+                  <i class="fas fa-link"></i>
+                  <div style="font-size: 1rem;">實用萬年曆</div>
+                </div>
+              </div>
+              <div class="card-body">
+                <!-- 標題 -->
+                <h5 class="card-title text-dark">實用萬年曆</h5>
+                <!-- 內文 -->
+                <p class="card-text text-muted">HTML / CSS / PHP</p>
               </div>
             </a>
           </div>
@@ -583,47 +624,53 @@
       </div>
       <div class="tab-pane fade pb-5" id="floP2">
         <div class="row">
-          <div class="col-12 col-md-6 col-lg-3 p-3">
-            <!-- 超連結 -->
-            <a class="card p-0" href="">
-              <!-- 圖片 -->
-              <img src="image/卡比小動畫.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <!-- 標題 -->
-                <h5 class="card-title text-dark">卡比小動畫</h5>
-                <!-- 內文 -->
-                <p class="card-text text-muted">以純程式碼撰寫</p>
-              </div>
-            </a>
-          </div>
-          <div class="col-12 col-md-6 col-lg-3 p-3">
-            <!-- 超連結 -->
-            <a class="card p-0" href="">
-              <!-- 圖片 -->
-              <img src="/image/11426908_MotionElements_background-rainfall-v_converted_370484-640x360-3s-q2.gif" class="card-img-top" alt="...">
-              <div class="card-body">
-                <!-- 標題 -->
-                <h5 class="card-title text-dark">數位時鐘</h5>
-                <!-- 內文 -->
-                <p class="card-text text-muted">以純程式碼撰寫</p>
-              </div>
-            </a>
-          </div>
+          <h1 class="text-center my-5">尚未開放</h1>
         </div>
       </div>
     </article>
   </section>
   <!-- 頁腳 -->
-  <footer class="bg-dark text-center py-3">
+  <footer class="text-center py-3" style="background-color: rgb(30, 0, 58);">
     <small class="text-muted">
       Designed by Fu,xin-yi<br>
       &copy; copyright <span class="text-warning">2021</span> . All Rights Reserved
     </small>
     <div id="floArrow" class="position-fixed">
-      <a href="#top" class="btn btn-warning rounded-circle text-white border-0">
+      <a href="#top" class="btn btn-danger rounded-circle text-white border-0" style="background-color: #F20074;">
         <i class="fas fa-angle-double-up"></i>
       </a>
     </div>
   </footer>
+  <!-- js -->
+  <script>
+    // 找出cookie值
+    function method(name){
+      let ckary = document.cookie.split("; ");
+      const getVal = ckary.find(e => name+'=' == e.substr(0, name.length+1));
+      return (getVal != undefined)? getVal.split("=")[1] : false;
+    }
+    
+    const user = method("user");
+
+    if(user != false){
+      document.querySelector("#login").classList="d-none";}
+    else document.querySelector("#logout").classList="d-none";
+
+    document.querySelector('[href="logout.html"]').before(`${user}`);
+
+  </script>
+  <!-- jq -->
+  <script>
+    $(".square").hover(function(){
+      $(this).find("i,p").toggleClass("text-white");
+      $(this).find("p").toggleClass("text-muted");
+    })
+    $("#floMenu a, #floArrow a").click(function(){
+      const
+        who = $(this).attr("href"),
+        val = $(who).offset().top - $("#floMenu").innerHeight();
+      $("html").animate({ scrollTop: val }, 1000);
+    });
+  </script>
 </body>
 </html>

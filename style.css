@@ -1,12 +1,18 @@
 *{
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Oswald', 'Noto Sans TC', sans-serif;
+  font-family: 'Play', 'Noto Sans TC', sans-serif;
+}
+:root{
+  scroll-behavior: auto;
+}
+.navbar-dark{
+  background-color: rgb(30, 0, 58) !important;
 }
 /* 最小頁面寬度 */
 body{
   min-width: 280px;
-  background-color: #f2f2f2;
+  background-color: #fff;
 }
 /* logo大小 */
 .logo{
@@ -43,7 +49,9 @@ img.d-block{
 }
 /* 自介背景 */
 #floMyProfile>div.bg{
-  background-color: #333;
+  background-image: url(image/bg/bg.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
   top: 0;
 }
 /* 照片大小 */
@@ -70,8 +78,10 @@ div.flex-column>p{
 /* 響應式 */
 @media (min-width: 992px){
   #floMyProfile>div.bg{
-    background-color: #333;
-    clip-path: polygon(0 0, 34% 0, 90% 100%, 0% 100%);
+    background-image: url(image/bg/bg.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    clip-path: polygon(0% 0%, 57% 0, 79% 74%, 0 100%, 0% 100%);
   }
   #floMyProfile img{
     max-width: 400px;
@@ -94,26 +104,29 @@ div.universe>div:not(div.h-75,div.dc-u){
   width: 120vh;
   height: 120vh;
   border-radius: 40%;
-  background-color: #333;
 }
 div.universe>div.u-1{
-  opacity: 0.8;
   transition: left 2s;
   animation: demo1 3000ms infinite linear;
+  background: radial-gradient(circle, rgba(74,40,156,1) 0%, rgba(0,9,43,1) 100%);
+  opacity: 0.8;
 }
 div.universe>div.u-2{
-  opacity: 0.6;
   animation: demo1 3500ms infinite linear;
+  opacity: 0.6;
+  background-color: #4A289C;
 }
 div.universe>div.u-3{
-  opacity: 0.3;
   animation: demo1 5000ms infinite linear;
+  background: radial-gradient(circle, rgba(242,0,116,1) 0%, rgba(116,70,172,1) 100%);
+  opacity: 0.3;
 }
 div.universe>div.dc-u{
   width: 120vh;
   height: 120vh;
-  background-image: url(image/universe.png);
+  background-image: url(image/icon/u-bg.svg);
   background-size: cover;
+  border-radius: 40%;
 }
 div.universe>div.h-75,
 div.vh-100>div.h-75{
@@ -143,7 +156,7 @@ div.universe>div.h-75{
 /* 背景改色 */
 @media (max-width: 768px){
   section.bg-dk{
-    background-color: #333;
+    background: radial-gradient(circle, rgba(74,40,156,1) 0%, rgba(0,9,43,1) 100%);
   }
 }
 .accordion-button:not(.collapsed) {
@@ -167,34 +180,64 @@ background-image: url(./icon/方向箭頭2.svg);
 }
 /* 圓形數字 */
 #floJobs div>a>div.rounded-circle{
-  background-image: url(image/moon.png);
   background-size: cover;
+  transition: all 0.4s ease;
+}
+#floJobs div>a>div.rounded-circle:hover{
+  transform: scale(1.5);
+}
+#floJobs div>a>div.c1{
+  background-image: url(image/icon/time-01.svg);
+  box-shadow: 0 0 10px 5px #F20074;
+}
+#floJobs div>a>div.c2{
+  background-image: url(image/icon/time-02.svg);
+  box-shadow: 0 0 8px 2px #F20074;
+}
+#floJobs div>a>div.c3{
+  background-image: url(image/icon/time-03.svg);
+  box-shadow: 0 0 8px 2px #61E327;
+}
+#floJobs div>a>div.c4{
+  background-image: url(image/icon/time-04.svg);
+  box-shadow: 0 0 8px 2px #28DBF1;
+}
+#floJobs div>a>div.c5{
+  background-image: url(image/icon/time-05.svg);
+  box-shadow: 0 0 8px 3px #5E8DEC;
+}
+#floJobs div>a>div.c6{
+  background-image: url(image/icon/time-06.svg);
+  box-shadow: 0 0 8px 3px #5E8DEC;
 }
 #floJobs div>a>div.rounded-circle::before{
-  color: #f2f2f2;
+  color: white;
   left: -40px;
   position: absolute;
-  top: -2px;
 }
 #floJobs div>a>div.c1::before{
   content : "2021";
-  top: 13px;
+  top: 20px;
 }
 #floJobs div>a>div.c2::before{
   content : "2019";
+  top: 5px;
 }
 #floJobs div>a>div.c3::before{
   content : "2018";
+  top: -2px;
 }
 #floJobs div>a>div.c4::before{
   content : "2017";
+  top: 5px;
 }
 #floJobs div>a>div.c5::before{
   content : "2016";
+  top: 10px;
 }
 #floJobs div>a>div.c6::before{
   content : "2011";
-  top: 3px;
+  top: 15px;
 }
 /* 超連結去底線 */
 a{
@@ -242,10 +285,31 @@ a{
 }
 /* 卡片圖片大小 */
 .card-img-top{
-  height: 150px;
+  height: 200px;
   object-fit: cover;
 }
-/* 分籤顏色 */
+/* 卡片hover */
+.card-href{
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  transition: all 0.4s ease;
+  opacity: 0%;
+  background-color: rgba(60, 60, 80, 0.6);
+}
+.card-href:hover{
+  opacity: 100%;
+  background-color: rgba(60, 60, 80, 0.6);
+}
+.card-href>div{
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgba(255,255,255,0.8);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
   color: #333;
   background-color: #ffc107;
@@ -257,6 +321,7 @@ a{
   right: 1.5rem;
   z-index: 999;
 }
+/* top動畫 */
 #floArrow>a {
   animation: bounce 2s ease infinite;
 }
@@ -285,4 +350,31 @@ a{
   90% {
     transform: translate(0, -4px);
   }
+}
+/* 標題顏色 */
+p>span.fns{
+  color: #1B1464;
+  font-weight: bold;
+  letter-spacing : -0.1rem;
+}
+p>span.col-md-3{
+  color: #F20074;
+}
+/* 顏色切換 */
+#flosKill i{
+  color: #F20074;
+}
+#flosKill .square:hover{
+  background: radial-gradient(circle, rgba(74,40,156,1) 0%, rgb(0, 22, 102) 100%);
+  color: white;
+}
+/* 圖片遮罩 */
+#floAutobiography img{
+  clip-path: polygon(39% 0, 100% 28%, 84% 83%, 38% 100%, 0 44%);
+}
+.div-hover:hover{
+  box-shadow: inset 0 0 5px 1px rgb(74 40 156 / 10%), 5px 5px 10px 0 rgb(0 9 43 / 20%);
+  border-radius: 10px;
+  padding: 10px 0;
+  transition: all 0.1s ease;
 }
