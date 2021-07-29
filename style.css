@@ -154,7 +154,7 @@ div.universe>div.h-75{
   right: 0;
 }
 /* 背景改色 */
-@media (max-width: 768px){
+@media (max-width: 767px){
   section.bg-dk{
     background: radial-gradient(circle, rgba(74,40,156,1) 0%, rgba(0,9,43,1) 100%);
   }
@@ -377,4 +377,8 @@ p>span.col-md-3{
   border-radius: 10px;
   padding: 10px 0;
   transition: all 0.1s ease;
+}
+/* 最小高度 */
+#floMyProfile,#floJobs,#flosKill,#floPortfolio{
+  min-height: 100vh;
 }
